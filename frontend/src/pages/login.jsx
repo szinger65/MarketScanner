@@ -1,7 +1,12 @@
 import Form from "../components/form"
 
 function Login() {
-  return <Form route="/api/token/" method="login" />
+  return 
+    <div>
+      <h1>Welcome to Matilda</h1>
+      <h2>A Marketplace</h2>
+      <Form route="/api/token/" method="login" />
+    </div>
 }
 
 export default Login
