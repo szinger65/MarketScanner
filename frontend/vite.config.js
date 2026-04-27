@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   css: {
-    transformer: 'postcss', // This tells Vite to use PostCSS instead of LightningCSS
+    transformer: 'postcss', // This tells Vite to use PostCSS
   },
 })
