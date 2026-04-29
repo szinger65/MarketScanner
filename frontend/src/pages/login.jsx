@@ -67,19 +67,18 @@ function Login() {
       </nav>
 
       {/* --- LOGIN CONTENT --- */}
-      <main className="flex flex-col items-center justify-center px-4 pt-16">
-        <div className="w-full max-w-md rounded-2xl bg-white p-10 shadow-xl border border-slate-100">
-          <div className="text-center mb-8">
+      <main className="flex flex-col items-center justify-center px-4 mt-10">
+        <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl border border-slate-100">
+          <div className="text-center mb-4">
             <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">Welcome to Matilda</h1>
-            <p className="text-slate-500 mt-3 font-medium">A Premium Marketplace Scanner</p>
+            <p className="text-slate-500 mt-3 font-medium">A Premium Marketplace Scanners</p>
+            <Form route="/api/token/" method="login" />
+            <div className="text-xs text-[#3b82fb] mt-5">
+              <Link to="/register">
+                Don't have an account, click here to register!
+              </Link>
+            </div>
           </div>
-          
-          {/* Your existing Form component */}
-          <Form route="/api/token/" method="login" />
-          
-          <p className="mt-8 text-center text-sm text-slate-400">
-            Secure marketplace access provided by Matilda Engine.
-          </p>
         </div>
       </main>
 

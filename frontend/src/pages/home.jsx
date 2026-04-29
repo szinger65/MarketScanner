@@ -1,78 +1,37 @@
 import { useState, useEffect } from "react"
+import { useNavigate, Link } from 'react-router-dom';
+import { LogOut, User } from 'lucide-react';
 import api from "../api" 
 
 
 function Home() {
-  const [notes, setNotes] = useState([])
-  const [content, setContent] = useState("")
-  const [title, setTitle] = useState("")
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [userData, setUserData] = useState(null)
+  const navigate = useNavigate()
 
-  
-  useEffect (() => {
-    getNotes()
-  }, [])
-
-  const getNotes = () => {
-    api
-    .get("/api/notes/")
-    .then((res) => res.data)
-    .then((data) => {setNotes(data); console.log(data) })
-    .catch((err) => alert(err))
-  }
-
-
-  const deleteNote = (id) => {
-    api.delete(`/api/notes/delete/${id}/`).then ((res) => {
-      if (res.status === 204) {
-        alert("Note was deleted")
-      } else {
-       alert("Failed to delete note")
-      }
-    }).catch((err) => alert(err))
-    getNotes()
-  }
-
-  const createNotes = (e) => {
-    e.preventDefault()
-    api.post("/api/notes/", {content, title}).then((res) => {
-      if (res.status === 201) alert("Note Created")
-      else alert("Failed to create note")
-    }).catch((err) => alert(err))
-    getNotes()
-  }
-
-
-  return ( 
+  return (
     <div>
-    <div>
-      <h2>Notes</h2>
+      <nav className="flex h-16 items-center justify-between border-b border-slate-200 bg-white px-6 shadow-sm">
+        {/* Title */}
+        <div className="flex items-center">
+          <span className="text-xl font-bold tracking-tight text-slate-900">
+            MATILDA
+          </span>
+        </div>
 
+        {/* Create Account Link */}
+        <div className="flex items-center">
+          <Link 
+            to="/login" 
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-slate-700 hover:bg-slate-100 transition-all border border-slate-200 shadow-sm"
+          >
+            <User className="w-4 h-4 text-slate-900" />
+            <span>Login</span>
+          </Link>
+        </div>
+      </nav>
     </div>
-    <h2>Create a note</h2>
-    <form onSubmit={createNotes}> 
-      <label htmlFor="Title">Title:</label>
-      <br/>
-      <input 
-        type="text" 
-        id="title" 
-        name="title" 
-        required 
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-      />
-      <label htmlFor="content">Content:</label>
-      <br />
-      <textarea 
-        id="content" 
-        name="content" 
-        required 
-        value={content} 
-        onChange={(e) => setContent(e.target.value)}
-      ></textarea>
-      <br/>
-      <input type="submit" value="Submit"></input>
-    </form>
-  </div> )
+  )
 }
 
-export default Home
+  export default Home

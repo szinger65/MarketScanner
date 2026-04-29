@@ -29,8 +29,8 @@ function ProtectedRoute({children}) {
   }
 
   const auth = async () => {
-    const token = localStorage.getItem(ACCESS_TOKEN)
-    if (!token) {
+    const token = localStorage.getItem(ACCESS_TOKEN) //grabs the acess token from the local storage
+    if (!token) { //if token doesn't exist sets the authorization to false
       setIsAuthorized(false)
       return <div>Loading...</div>
     }

@@ -21,7 +21,7 @@ function Form({route, method}) {
       const res = await api.post(route, {username, password})
       if (method === "login") {
         localStorage.setItem(ACCESS_TOKEN, res.data.access)
-        localStorage.setItem(REFRESH_TOKEN, res.data.refresh)
+        localStorage.getItem(REFRESH_TOKEN, res.data.refresh)
         navigate("/")
       } else {
         navigate("/login")
@@ -32,7 +32,7 @@ function Form({route, method}) {
       setLoading(false)
     }
   }
-  return <form onSubmit={handleSubmit} className="form-container">
+  return <form onSubmit={handleSubmit}>
     <h1>{name}</h1>
     <input 
       className = "form-input"
