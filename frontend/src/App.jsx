@@ -16,7 +16,7 @@ function LogOut() {
 function RegisterAndLogout(){
   localStorage.clear()
   return <Register />
-} //d
+} //hello mfer
 function App() {
   return (
     <BrowserRouter>
