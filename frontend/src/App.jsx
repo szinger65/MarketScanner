@@ -16,7 +16,7 @@ function LogOut() {
 function RegisterAndLogout(){
   localStorage.clear()
   return <Register />
-}
+} //d
 function App() {
   return (
     <BrowserRouter>
